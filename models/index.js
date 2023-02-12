@@ -12,13 +12,18 @@ Users.hasMany(Blogposts, {
   target: 'id'
 })
 
+Blogposts.hasMany(Comments, {
+  foreignKey: 'blog_id',
+  target: 'id'
+})
+
 Blogposts.belongsTo(Users, {
   foreignKey: 'author_id',
   target: 'id'
 })
 
 Comments.belongsTo(Blogposts, {
-  foreignKey: 'blogposts_id',
+  foreignKey: 'blog_id',
   target: 'id',
 })
 
