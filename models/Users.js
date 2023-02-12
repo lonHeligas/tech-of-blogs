@@ -32,7 +32,16 @@ Users.init(
       validate: {
         len: [8],
       }
+    },
+    blogposts_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'blogposts',
+        key: 'id',
+      }
     }
+    
+    
   },
   // {
   //   hooks: {

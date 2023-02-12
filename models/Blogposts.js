@@ -24,6 +24,8 @@ Blogposts.init (
       references: {
         model: 'user',
         key: 'id',
+        allowNull: false,
+        unique: false
       }
     },
     body: {
