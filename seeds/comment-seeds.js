@@ -1,6 +1,6 @@
-const { Category } = require('../models');
+const { Comments } = require('../models');
 
-const CategoryData = [
+const CommentData = [
   {
     "id": 1,
     "blog_id": 1,    
@@ -21,6 +21,6 @@ const CategoryData = [
   }
 ]
 
-const seedComments = () => Category.bulkCreate(CategoryData);
+const seedComments = () => Comments.bulkCreate(CommentData);
 
 module.exports = seedComments;

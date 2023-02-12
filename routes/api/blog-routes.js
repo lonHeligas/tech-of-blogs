@@ -5,6 +5,17 @@ const { Blogposts, Users, Comments } = require("../../models");
 
 
 
+router.get('/', async(req, res) => {
+  try {
+    const blogData = await Blogposts.findAll()
+    res.status(200).json(blogData);
+  } catch (error){
+    console.log(error);
+    res.status(400).json(error);
+  };
+})
+
+
 
 // router.get("/", async (req, res) => {
 //   try {

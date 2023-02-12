@@ -14,18 +14,13 @@ Blogposts.init (
     title: {
       type: DataTypes.STRING,
       allowNull: false,      
-    },
-    author: {
-      type: DataTypes.STRING,
-      allowNull: false,            
-    },
+    },    
     author_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
+        model: 'users',
         key: 'id',
-        allowNull: false,
-        unique: false
+        allowNull: false        
       }
     },
     body: {

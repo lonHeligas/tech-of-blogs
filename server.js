@@ -11,18 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(routes);
-// app.get('/', (req,res) => {
-//   res.send(
-//     `Hello there`
-//   );
-// });
 
-// app.get('/api', (req,res) => {
-//   res.send(
-//     `Hello there again`
-//   )
-// })
-
-sequelize.sync({ force: true }).then(() => {
+// sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
-});
+// });
