@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-
+// console.log(`hello from Blogposts.js!`)
 class Blogposts extends Model {}
 
 Blogposts.init (
@@ -15,17 +15,17 @@ Blogposts.init (
       type: DataTypes.STRING,
       allowNull: false,      
     },
-    user: {
+    author: {
       type: DataTypes.STRING,
       allowNull: false,            
     },
-    // user_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'user',
-    //     key: 'id',
-    //   }
-    // },
+    author_id: {
+      type: DataTypes.INTEGER,
+      // references: {
+      //   model: 'user',
+      //   key: 'id',
+      // }
+    },
     body: {
       type: DataTypes.STRING,
       allowNull: false,      
