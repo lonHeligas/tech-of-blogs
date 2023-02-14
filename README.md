@@ -8,6 +8,7 @@
 ## Challenges I encountered
 
 I should note that this app is currently incomplete, as the following things are missing:
+All styling (it looks pretty ugly at the moment)
 Login/logout/sign up
 password hashing
 viewing comments on blogs
