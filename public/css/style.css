@@ -1,4 +1,8 @@
-.boxhead a {
+.a {
   color: #FFFFFF;
+  text-decoration: none;
+};
+
+.blog-title {
   text-decoration: none;
 }

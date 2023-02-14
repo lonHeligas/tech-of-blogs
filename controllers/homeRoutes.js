@@ -22,6 +22,20 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.get('/blogs/:id', async (req, res) => {
+  try {
+    const blogData = await Blogposts.findByPk(req.params.id, {})
+    const blogpost = blogData.get({ plain: true });
+
+    res.render('blogpost', {
+      ...blogpost,
+      logged_in: req.session.logged_in
+    });
+  } catch (error){
+    res.status(500).json(error)
+  }
+})
+
 router.get('/login', (req,res) => {
   if (req.session.logged_in) {
     res.redirect('/');
@@ -39,5 +53,5 @@ router.get('/signup', (req,res) => {
   })
 
 
-  
+
 module.exports = router;
