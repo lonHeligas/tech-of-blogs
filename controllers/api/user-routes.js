@@ -1,79 +1,65 @@
 const router = require("express").Router();
 const { Users } = require("../../models");
 
-// for posting 
+
+router.post('/', async (req, res) => {
+  try {
+    const userData = await Users.create(req.body);
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.post('/login', async (req, res) => {
+  try {
+    const userData = await Users.findOne({ where: { email: req.body.email } });
+
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    const validPassword = await userData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      
+      res.json({ user: userData, message: 'You are now logged in!' });
+    });
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    res.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+})
 
 
-
-// router.get("/", async (req, res) => {
-//   try {
-//     const categoryData = await Category.findAll({
-//       include: [{ model: Product }],
-//     });
-//     res.json(categoryData);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(400).json(error);
-//   }
-// });
-
-// router.get("/:id", async (req, res) => {
-//   try {
-//     const categoryData = await Category.findOne({
-//       where: { id: req.params.id },
-//       include: [{ model: Product }],      
-//     });
-//     res.json(categoryData);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(400).json(error);
-//   }
-//   // * find one category by its `id` value
-//   // * be sure to include its associated Products
-// });
-
-// router.post("/", async (req, res) => {
-//   // * create a new category
-//   try {
-//     // console.log(`look here: ${req.body.category_name}`)    
-//     const categoryData = await Category.create({
-//      category_name: req.body.category_name,
-//     })
-//     res.json(categoryData);    
-//   } catch (error) {
-//     console.log(error);
-//     res.status(400).json(error);
-//   }
-// });
-
-// router.put("/:id", async (req, res) => {
-//   // * update a category by its `id` value
-//   try {
-//     const categoryData = await Category.findOne({
-//       where: { id: req.params.id },
-//     });
-//     await categoryData.update({ category_name: req.body.category_name 
-//     })
-//     res.json(categoryData)  
-//   } catch (error) {
-//     console.log(error);
-//     res.status(400).json(error);
-//   }       
-// });
-
-// router.delete("/:id", async (req, res) => {
-//   // * delete a category by its `id` value
-//   try {
-//     await Category.destwoy({
-//       where: { id: req.params.id },
-//     })
-//     res.status(204).send('');
-//   } catch (error) {
-//     console.log(error);
-//     res.status(400).json(error);
-//   }
-// });
 
 module.exports = router;
