@@ -10,16 +10,10 @@ router.get('/', async (req, res) => {
         attributes: {exclude: ["password"]}
       }
     });
-    console.log(blogData)
-    const blogs = blogData.map(blog => blog.get({plain: true}))
-
-    console.log("*+++++++++++++++++++++++++++++++++++++++++++++++")
-    console.log("*+++++++++++++++++++++++++++++++++++++++++++++++")
-    console.log("*+++++++++++++++++++++++++++++++++++++++++++++++")
-    console.log("*+++++++++++++++++++++++++++++++++++++++++++++++")
-
-    
-    console.log(blogs)
+    // console.log(blogData)
+    const blogs = blogData.map(blog => blog.get({plain: true}))    
+    // console.log("*+++++++++++++++++++++++++++++++++++++++++++++++")    
+    // console.log(blogs)
     res.render('homepage', {
       blogs
     })
@@ -27,5 +21,22 @@ router.get('/', async (req, res) => {
     res.status(500).json(error);
   }
 })
+
+router.get('/login', (req,res) => {
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+})
+
+router.get('/signup', (req,res) => {
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+  res.render('signup');
+  })
+
 
 module.exports = router;
