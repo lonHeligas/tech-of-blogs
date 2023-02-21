@@ -13,8 +13,7 @@ const seedAll = async () => {
   await seedBlogs();
   console.log('\n blogs are in sync\n');
   await seedComments();
-  console.log('\n comments are in sync\n');
-  
+  console.log('\n comments are in sync\n');  
   process.exit(0);
 };
 
