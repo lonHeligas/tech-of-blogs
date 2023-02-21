@@ -5,3 +5,28 @@
   <p>By {{user.username}}</p>
   {{comment}}
 </div>
+{{#if comments.length}}
+  {{#each comments as |comment|}}
+    {{comment.comment_body}}
+  {{/each}}
+{{/if}}
+
+{{#if logged_in}}
+  <div class="col-md-6">
+    <h2>Share your thoughts...</h2>
+    <form class="form add-comment-form" data-attribute="{{id}}">
+      <div class="form-group">
+        <label for="comment-body">Add your comment:</label>
+        <input class="form-input" type="text" id="comment-body" />
+      </div>
+      <div class="form-group">
+        <p> {{getGuideline}}</p>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">POST IT!</button>
+      </div>   
+    </form>
+  </div>
+
+<script src="../js/addComment.js"></script>
+{{/if}}
