@@ -48,13 +48,11 @@ router.get('/blogs/:id', async (req, res) => {
   }
 })
 
-// router.get("/dashboard", withAuth, (req,res)=> {
-
-
-//   {
-//     logged_in: true
-//   }
-// })
+router.get("/dashboard", withAuth, (req,res)=> {
+  {
+    logged_in: true
+  }
+})
 
 router.get('/login', (req,res) => {
   if (req.session.logged_in) {
