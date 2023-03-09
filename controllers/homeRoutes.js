@@ -61,8 +61,11 @@ router.get('/dashboard', async(req, res) => {
     const blogs = blogData.map(blog => blog.get({plain: true}))    
 
     
-    res.render('dashboard',
-    blogs);
+    res.render('dashboard',{
+      blogs,
+      logged_in: true
+    }
+ );
     console.log('ROUTE HIT!!!!!!! (Hello There!)', )
   } catch (error){
     console.log(error);
