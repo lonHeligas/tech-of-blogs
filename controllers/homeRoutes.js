@@ -40,7 +40,7 @@ router.get('/blogs/:id', async (req, res) => {
     })
     const blogpost = blogData.get({ plain: true });
     console.log(blogpost)    
-    res.render('blogpost', {
+    res.render('comment', {
       ...blogpost,
       logged_in: req.session.logged_in,
     });
@@ -50,15 +50,20 @@ router.get('/blogs/:id', async (req, res) => {
 })
 
 router.get('/dashboard', async(req, res) => {
-  console.log(`++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n`)
-  console.log('ROUTE HIT', )
-  console.log(req.session.user_id)
+  // console.log(`++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n`)
+  // console.log('ROUTE HIT', )
+  // console.log(req.session.user_id)
   try {
     const blogData = await Blogposts.findAll({
       where: { author_id: req.session.user_id },
     })
-    res.status(200).json(blogData)
-    res.render('dashboard');
+    
+    const blogs = blogData.map(blog => blog.get({plain: true}))    
+
+    
+    res.render('dashboard',
+    blogs);
+    console.log('ROUTE HIT!!!!!!! (Hello There!)', )
   } catch (error){
     console.log(error);
     res.status(400).json(error);

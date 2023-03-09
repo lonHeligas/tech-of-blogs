@@ -1,6 +1,6 @@
 <div>
   <h1>Your Blogposts</h1>
-  {{#if logged_in}}
+  {{!-- {{#if logged_in}}
     {{#if blog.author_id = id}}
       {{#each blogs as | blog |}}
         {{> blog-partial}}
@@ -9,10 +9,10 @@
   {{/if}}
   {{#else}}
   <h1>You need to log into your account to see this page.</h1>
-  {{/else}}
+  {{/else}} --}}
   
 </div>
 
 
 
-<script src="../js/addPost.js"></script>
+<script src="./js/addPost.js"></script>
