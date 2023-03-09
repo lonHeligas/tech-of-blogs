@@ -16,8 +16,8 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    console.log(`++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n`)
-    console.log('LOGIN ROUTE HIT', req.body)
+    // console.log(`++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n`)
+    // console.log('LOGIN ROUTE HIT', req.body)
     const userData = await Users.findOne({ where: { email: req.body.email } });
     console.log("user Data", userData)
     if (!userData) {
@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
       return;
     }
     const validPassword = await userData.checkPassword(req.body.password);
-    console.log("IS the password valid? : ", validPassword)
+    // console.log("IS the password valid? : ", validPassword)
     if (!validPassword) {
       res
         .status(400)
@@ -35,7 +35,7 @@ router.post('/login', async (req, res) => {
       return;
     }
     req.session.save(() => {
-      console.log("SAVING A NEW SESSION!")
+      // console.log("SAVING A NEW SESSION!")
       req.session.user_id = userData.id;
       req.session.logged_in = true;      
       res.json({ user: userData, message: 'You are now logged in!' });

@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Blogposts, Users, Comments } = require("../../models");
 const withAuth = require("../../utils/auth")
-// console.log(`hello there from blog-routes!`)
+// console.log(`hello there from comment-routes!`)
 // The `/api/categories` endpoint
 
 router.post('/', withAuth, async(req, res) => {
