@@ -45,19 +45,5 @@ router.post('/post', async (req, res) => {
   }
 })
 
-// ^ find all posts by a particular author (it's coming up undefined)
-// router.get('/dashboard', async(req, res) => {
-//   console.log(`++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n`)
-//   console.log('ROUTE HIT', )
-//   try {
-//     const blogData = await Blogposts.findAll({
-//       where: { author_id: req.session.user_id },
-//     })
-//     res.status(200).json(blogData)
-//   } catch (error){
-//     console.log(error);
-//     res.status(400).json(error);
-//   }
-// })
 
 module.exports = router;

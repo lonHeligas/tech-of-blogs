@@ -58,6 +58,7 @@ router.get('/dashboard', async(req, res) => {
       where: { author_id: req.session.user_id },
     })
     res.status(200).json(blogData)
+    res.render('dashboard');
   } catch (error){
     console.log(error);
     res.status(400).json(error);
