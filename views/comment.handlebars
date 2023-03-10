@@ -5,6 +5,7 @@
   <p>By {{user.username}}</p>
   {{log user.username}}
   {{comment}}
+   {{!-- {{log "HELLLOOOO FROM THE COMMENT"}} --}}
 </div>
 {{#if comments.length}}
   <h4>Comments:</h4>
@@ -27,7 +28,7 @@
         <p> {{getGuideline}}</p>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" type="submit">Post</button>
+        <button class="btn btn-primary" type="submit-comment">Post</button>
       </div>   
     </form>
   </div>
