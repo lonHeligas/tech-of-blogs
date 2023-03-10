@@ -8,17 +8,17 @@ const postFormHandler = async (event) => {
 
   if ( post_body ) {
     // send a POST request to the API endpoint
-    const resposne = await fetch('/api/blogs', {
+    const response = await fetch('/api/blogs', {
       method: 'POST',
       body: JSON.stringify({ post_body, })
     })
+
+    if (response.ok) {
+      document.location.reload()
+    } else {
+      alert(response.statusText);
+    }
   }
-
-  
-
-
-
-
 }
 
 

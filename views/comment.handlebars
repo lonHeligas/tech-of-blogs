@@ -3,11 +3,15 @@
   </h3>
   <p>{{body}}</p>
   <p>By {{user.username}}</p>
+  {{log user.username}}
   {{comment}}
 </div>
 {{#if comments.length}}
+  <h4>Comments:</h4>
   {{#each comments as |comment|}}
-    {{comment.comment_body}}
+    <p>
+      "{{comment.comment_body}}" by {{commentauthor_id.username}}
+    </p>
   {{/each}}
 {{/if}}
 
