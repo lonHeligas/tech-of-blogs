@@ -30,6 +30,6 @@ const commentFormHandler = async (event) => {
 
 document
   .querySelector('.add-comment-form')
-  .addEventListener('submit-comment', commentFormHandler);
+  .addEventListener('submit', commentFormHandler);
 
 
