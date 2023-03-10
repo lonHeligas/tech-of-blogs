@@ -27,6 +27,11 @@ Comments.belongsTo(Blogposts, {
   target: 'id',
 })
 
+Comments.belongsTo(Users, {
+  foreignKey: 'commentauthor_id',
+  target: 'id',
+})
+
 module.exports = { 
   Users, 
   Comments, 

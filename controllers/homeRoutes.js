@@ -28,20 +28,21 @@ router.get('/', async (req, res) => {
 router.get('/blogs/:id', async (req, res) => {
   try {
     const blogData = await Blogposts.findByPk(req.params.id, {
-      include: [{
-        model: Users,
-        attributes: {exclude: ["password"]},
-        model: Comments
-      } 
+      include: { all: true, nested: true, attributes: {exclude: ['password']}}
       // , {
       //   model: { Comments }      
       // }      
-    ]
+    // ]
     })
     const blogpost = blogData.get({ plain: true });
-    console.log(`this is the blogpost: ${blogpost}`)    
-    res.render('blogpost', {
-      ...blogpost,
+    const author = await Users.findOne({ 
+      where: { id: blogpost.author_id}
+    })
+    console.log('this is the author:', blogpost)
+    //console.log('this is the blogpost: ', blogpost)    
+    res.render('comment', {
+      author: author.get({ plain: true }),
+      ...blogpost, 
       logged_in: req.session.logged_in,
     });
   } catch (error){
