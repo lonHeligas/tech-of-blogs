@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
         attributes: {exclude: ["password"]}
       }
     });
-    // console.log(blogData)
+    
     const blogs = blogData.map(blog => blog.get({plain: true}))    
     // console.log("*+++++++++++++++++++++++++++++++++++++++++++++++")    
     // console.log(blogs)
@@ -92,6 +92,7 @@ router.post('/', async (req,res) => {
       title: req.body.title,
       content: req.body.content,
       author_id: req.session.user_id
+      
     })
     res.status(200).json(blogData);
   } catch (error){

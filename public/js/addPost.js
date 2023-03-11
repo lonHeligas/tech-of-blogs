@@ -4,7 +4,7 @@ const postFormHandler = async (event) => {
   
   const postTitle = document.querySelector('#post-title').value.trim();
 
-  const postBody = document.querySelector('#post-body').ariaValueMax.trim();
+  const postBody = document.querySelector('#post-body').value.trim();
 
 
   console.log(post_body);
