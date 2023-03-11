@@ -2,8 +2,11 @@
 
 [This is the repository for this challenge](https://github.com/lonHeligas/tech-of-blogs)
 
-[This is the link to the live app. Note: this is not fully working yet](tech-of-blogs-production.up.railway.app)
+[This is the link to the live app](https://tech-of-blogs.herokuapp.com/)
 
+[Here is a screnshot of the main page (unstyled)](./public/img/techofblogs_screnshot.png)
+
+Apologies for the strange posts. They're references to Agents of SHIELD, Season 6
 
 ## Challenges I encountered
 
@@ -13,8 +16,8 @@ I should note that this app is currently incomplete, as the following things are
 
 All styling (it looks pretty ugly at the moment)
 posting blogs
-
-
+posting dates
+deleting blogs and comments
 
 
 ## Your Task
