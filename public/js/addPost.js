@@ -2,16 +2,21 @@ const postFormHandler = async (event) => {
   event.preventDefault();
   console.log('hello there from the post file');
   
-  const postTitle = document.querySelector('#post-title').value.trim();
+  const postTitle = event.target.querySelector('#post-title').value.trim();
 
-  const postBody = document.querySelector('#post-body').value.trim();
+  const postBody = event.target.querySelector('#post-body').value.trim();
+
+  // console.log('this is the post title', postTitle);
+  // console.log('this is the post body', postBody);
+  // ! this is not working  
+  
 
 
-  console.log(post_body);
+  
 
 
     // send a POST request to the API endpoint
-    const response = await fetch('/api/blogs', {
+    const response = await fetch('/api/blogs/post', {
       method: 'POST',      
       body: JSON.stringify({ 
       postTitle: post,

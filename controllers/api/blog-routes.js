@@ -33,7 +33,7 @@ router.get('/:id', async(req, res) => {
   }
 })
 
-router.post('/post', async (req, res) => {
+router.post('/post', async (req, res) => {  
   try {
     const blogData = await Blogposts.create(
       req.body

@@ -69,18 +69,14 @@ router.get('/dashboard', async(req, res) => {
       logged_in: true
     }
  );
-    console.log('ROUTE HIT!!!!!!! (Hello There!)', )
+    // console.log('ROUTE HIT!!!!!!! (Hello There!)', )
   } catch (error){
     console.log(error);
     res.status(400).json(error);
   }
 })
 
-// router.get("/dashboard", withAuth, (req,res)=> {
-//   {
-//     logged_in: true
-//   }
-// })
+
 
 router.get('/dashboard/postathought', (req,res) => {
   res.render('postathought')
