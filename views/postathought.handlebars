@@ -1,0 +1,27 @@
+ <div>
+  <h1>Think a Thought and post It</h1>  
+      {{#each blogs as | blog |}}
+        {{> dashboard-blog-parital}}
+      {{/each}}     
+</div> 
+
+<div class="col-md-6">   
+    <form class="form add-comment-form" data-attribute="{{id}}">
+      <div class="form-group">
+        <label for="comment-body">Title:</label>
+        <input class="form-input" type="text" id="post-title" />
+        </div>
+      <div>
+        <label for="comment-body">Body:</label>
+        <textarea rows="4" cols="50" class="form-input" type="text" id="post-body"></textarea>
+      </div>
+      <div class="form-group">
+        <p> {{getGuideline}}</p>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Post</button>
+      </div>   
+    </form>
+  </div>
+
+<script src="/js/addPost.js"></script>

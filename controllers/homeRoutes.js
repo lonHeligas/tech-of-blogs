@@ -50,6 +50,8 @@ router.get('/blogs/:id', async (req, res) => {
   }
 })
 
+
+
 router.get('/dashboard', async(req, res) => {
   // console.log(`++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n`)
   // console.log('ROUTE HIT', )
@@ -79,6 +81,25 @@ router.get('/dashboard', async(req, res) => {
 //     logged_in: true
 //   }
 // })
+
+router.get('/dashboard/postathought', (req,res) => {
+  res.render('postathought')
+})
+
+router.post('/', async (req,res) => {
+  try {
+    const blogData = await Blogposts.create({
+      title: req.body.title,
+      content: req.body.content,
+      author_id: req.session.user_id
+    })
+    res.status(200).json(blogData);
+  } catch (error){
+    res.status(400).json(error);
+  }
+})
+
+
 
 router.get('/login', (req,res) => {
   if (req.session.logged_in) {

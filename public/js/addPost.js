@@ -1,17 +1,27 @@
 const postFormHandler = async (event) => {
   event.preventDefault();
+  console.log('hello there from the post file');
+  
+  const postTitle = document.querySelector('#post-title').value.trim();
 
-  const post_body = document.querySelector('#post-body').ariaValueMax.trim();
+  const postBody = document.querySelector('#post-body').ariaValueMax.trim();
+
+
   console.log(post_body);
-  const blog_id = event.target.getAttribute("data-attribute")
-  console.log(blog_id) // ! not this.
 
-  if ( post_body ) {
+
     // send a POST request to the API endpoint
     const response = await fetch('/api/blogs', {
-      method: 'POST',
-      body: JSON.stringify({ post_body, })
-    })
+      method: 'POST',      
+      body: JSON.stringify({ 
+      postTitle: post,
+      postBody: body,
+      datecreated: new Date()
+    }),
+      headers: { 'Content-Type': 'application/json' },
+    });     
+     
+    
 
     if (response.ok) {
       document.location.reload()
@@ -19,8 +29,6 @@ const postFormHandler = async (event) => {
       alert(response.statusText);
     }
   }
-}
-
 
 document  
   .querySelector('.add-post-form')

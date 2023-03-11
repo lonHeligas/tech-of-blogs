@@ -1,12 +1,12 @@
 const commentFormHandler = async (event) => {
   event.preventDefault();
-  console.log('hello there from the comment file');
+  // console.log('hello there from the comment file');
 
   // Collect values from the login form
   const comment_body = document.querySelector('#comment-body').value.trim();
-  console.log(` this is the comment_body ${comment_body}`)
+  //console.log(` this is the comment_body ${comment_body}`)
   const blog_id = event.target.getAttribute("data-attribute")
-  console.log(blog_id)
+  //console.log(blog_id)
   
 
   if (comment_body && blog_id) {

@@ -1,5 +1,5 @@
 const { Blogposts } = require('../models');
-console.log(`Hello there from blog-seeds!`)
+// console.log(`Hello there from blog-seeds!`)
 const categoryData =[
   {
   "id": 1,
